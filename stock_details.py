@@ -38,4 +38,3 @@ def get_stock_info(symbol):
     market_cap = (full_quote_dict["marketCap"])
 
     return symbol, price, volume, pe_ratio, market_cap
-

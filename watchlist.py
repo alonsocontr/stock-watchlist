@@ -27,17 +27,15 @@ class StockWatchlist():
     # Display watchlist
     def store_watchlist(self):
         if self.stock_list:
-            stock_info_list = []
-            for stock in stock_info_list:
+            for stock in self.stock_list:
                 stock_info = stock_details.get_stock_info(stock)
                 stock_name = f"- {stock_info[0]}"
                 stock_price = f"Price: ${stock_info[1]:.2f}"
                 stock_daily_volume = f"Daily volume: {stock_info[2]:,}"
                 stock_pe_ratio = f"P/E Ratio: {stock_info[3]:.2f}"
                 stock_market_cap = f"Market Cap: ${stock_info[4]:,}"
-                stock_info_list.append((stock_name, stock_price, stock_daily_volume, stock_pe_ratio, stock_market_cap))
-                return stock_info_list
+                self.stock_list.append((stock_name, stock_price, stock_daily_volume, stock_pe_ratio, stock_market_cap))
+                return self.stock_list
         else:
             print("Your stock watchlist is currently empty.")
             return []
-

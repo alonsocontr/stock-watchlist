@@ -22,4 +22,3 @@ def main():
     interface.main()
 
 main()
-
