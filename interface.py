@@ -10,12 +10,11 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Stock Watchlist")
         self.setGeometry(700, 250, 500, 500)
 
-        #Initialize stock watchlist class
+        # Initialize stock watchlist class
         self.stock_watchlist_instance = watchlist.StockWatchlist()
         self.stock_watchlist_instance.add_stock("NVDA")
         self.stock_watchlist_instance.add_stock("AAPL")
 
-        count = self.stock_watchlist_instance.stock_list.count()
         # Add loop for each stock in stock list
 
         for stock in self.stock_watchlist_instance.stock_list:
