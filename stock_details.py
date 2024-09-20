@@ -1,4 +1,5 @@
 import requests
+import time
 
 # Financial modeling api key
 API_KEY = "Tle4uAteMqjtOCv4fozB2fiHlGC1VsOK"
