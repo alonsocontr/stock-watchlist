@@ -5,6 +5,7 @@ import sys
 
 import watchlist
 import stock_details
+import database
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -12,7 +13,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Stock Watchlist")
         self.setGeometry(650, 100, 600, 800)
 
-        # Initialize stock watchlist class
+        # Initialize stock watchlist class (with database integration)
         self.stock_watchlist_instance = watchlist.StockWatchlist()
 
         # Add a widget to display the stocks
@@ -40,37 +41,8 @@ class MainWindow(QMainWindow):
         self.detail_buttons = {}
         self.stock_layouts = {}
 
-        # Add loop for each stock in stock list
+        # Add loop for each stock in stock list (from the database)
         for stock in self.stock_watchlist_instance.stock_list:
-            stock_list_h_layout = QHBoxLayout()
-
-            # Create stock symbol label
-            self.stock_symbol_label = QLabel(f"- {stock}", self)
-            self.stock_symbol_label.setFont(QFont("Arial", 20))
-            stock_list_h_layout.addWidget(self.stock_symbol_label)
-
-            # Create label for displaying stock details
-            stock_details_label = QLabel("Loading...", self)
-            stock_details_label.setFont(QFont("Arial", 12))
-            stock_details_label.setVisible(False)  # Initially hidden
-            stock_list_h_layout.addWidget(stock_details_label)
-
-            # Show/Hide details button
-            details_button = QPushButton("Show details", self)
-            details_button.setFont(QFont("Arial", 10))
-
-            # Capture current stock, button, and label in lambda using default arguments
-            details_button.clicked.connect(lambda checked, btn=details_button, lbl=stock_details_label: self.toggle_details(btn, lbl))
-            stock_list_h_layout.addWidget(details_button)
-
-            # Store labels and buttons in dictionaries for later access
-            self.stock_labels[stock] = stock_details_label
-            self.detail_buttons[stock] = details_button
-
-            # Add the layout to the stock list container
-            self.stock_list_container.addLayout(stock_list_h_layout)
-            self.stock_list_container.addSpacing(10)
-
             self.add_stock_to_gui(stock)
 
         # Spacer to push the buttons to the bottom
@@ -87,7 +59,7 @@ class MainWindow(QMainWindow):
         # Button to add a stock
         self.add_stock_button = QPushButton("Add stock", self)
         self.add_stock_button.clicked.connect(lambda: self.modify_stock(action="add"))
-        self.add_stock_button.setFixedSize(650,75)
+        self.add_stock_button.setFixedSize(650, 75)
         self.layout.addWidget(self.add_stock_button)
 
         # Button to remove a stock
@@ -105,27 +77,18 @@ class MainWindow(QMainWindow):
         self.refresh_data()
 
     def modify_stock(self, action):
-        # Get the stock symbol entered by the user
         stock_symbol = self.stock_symbol_input.text().strip().upper()
 
-        # Validate input
         if not stock_symbol:
             print("Please enter a valid stock symbol.")
             return
 
         if action == "add":
-            # Add stock to the watchlist and GUI
             self.stock_watchlist_instance.add_stock(stock_symbol)
             self.add_stock_to_gui(stock_symbol)
-            print(f"Added {stock_symbol} to watchlist.")
         elif action == "remove":
-            # Remove stock from the watchlist and GUI
-            if stock_symbol in self.stock_watchlist_instance.stock_list:
-                self.stock_watchlist_instance.remove_stock(stock_symbol)
-                self.remove_stock_from_gui(stock_symbol)
-                print(f"Removed {stock_symbol} from watchlist.")
-            else:
-                print(f"Stock {stock_symbol} is not in the watchlist.")
+            self.stock_watchlist_instance.remove_stock(stock_symbol)
+            self.remove_stock_from_gui(stock_symbol)
 
         # Clear the input field
         self.stock_symbol_input.clear()
@@ -149,7 +112,7 @@ class MainWindow(QMainWindow):
         details_button = QPushButton("Show details", self)
         details_button.setFont(QFont("Arial", 10))
         details_button.clicked.connect(
-        lambda checked, btn=details_button, lbl=stock_details_label: self.toggle_details(btn, lbl))
+            lambda checked, btn=details_button, lbl=stock_details_label: self.toggle_details(btn, lbl))
         stock_list_h_layout.addWidget(details_button)
 
         # Store layout in the dictionary

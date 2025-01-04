@@ -10,12 +10,18 @@
 #    user's watchlist. This includes graphs, historical data, public sentiment
 #    and analyst ratings/average stock forecasts. Need more APIs here...
 # 4. Add a notifications system either through email or SMS
-import interface
 
+import interface
+import database  # Import the database module
 
 def main():
-    # Initialize watchlist
+    # Ensure the table is created before running the application
+    database.create_table()
+
+    # Initialize the interface
     interface.main()
 
 if __name__ == "__main__":
     main()
+
+
