@@ -29,8 +29,8 @@ The **Stock Market Watchlist Application** is a Python-based desktop application
 1. Open a terminal or command prompt.
 2. Navigate to the extracted folder.
 3. Install the required Python libraries:
-   \`\`\`bash
-   pip install -r requirements.txt
+   \`\`\`
+   python -m pip install -r requirements.txt
    \`\`\`
 
 ### Step 3: Set Up Environment Variables
