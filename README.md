@@ -45,7 +45,7 @@ To run the application:
 1. Open a terminal or command prompt.
 2. Navigate to the project folder.
 3. Launch the app:
-   \`\`\`bash
+   \`\`\`
    python main.py
    \`\`\`
 
@@ -71,7 +71,7 @@ The application will open, and you can:
 
 The \`.env\` file stores sensitive information, such as your API key. Example:
 \`\`\`
-API_KEY=your_actual_api_key_here
+API_KEY=YOUR_API_KEY_HERE
 \`\`\`
 
 Make sure to:
@@ -84,8 +84,8 @@ Make sure to:
 
 - **Missing API Key**: Ensure your \`.env\` file contains the correct API key.
 - **Dependency Issues**: Verify all dependencies are installed using:
-  \`\`\`bash
-  pip install -r requirements.txt
+  \`\`\`
+  python -m pip install -r requirements.txt
   \`\`\`
 - **Python Version**: Ensure you’re using Python 3.7 or higher.
 
