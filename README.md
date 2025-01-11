@@ -18,7 +18,7 @@ The **Stock Market Watchlist Application** is a Python-based desktop application
 
 ---
 
-## Installation
+## Installation (without Git)
 
 ### Step 1: Download the Repository
 1. Visit the [GitHub Repository](https://github.com/alonsocontr/stock_watchlist).
