@@ -21,7 +21,7 @@ The **Stock Market Watchlist Application** is a Python-based desktop application
 ## Installation
 
 ### Step 1: Download the Repository
-1. Visit the [GitHub Repository](https://github.com/yourusername/stock-watchlist).
+1. Visit the [GitHub Repository](https://github.com/alonsocontr/stock_watchlist).
 2. Click the green **Code** button and select **Download ZIP**.
 3. Extract the downloaded ZIP file to a folder on your computer.
 
