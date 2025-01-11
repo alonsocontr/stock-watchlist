@@ -70,7 +70,7 @@ The application will open, and you can:
 ## .env File
 
 The \`.env\` file stores sensitive information, such as your API key. Example:
-\`\`\`plaintext
+\`\`\`
 API_KEY=your_actual_api_key_here
 \`\`\`
 
