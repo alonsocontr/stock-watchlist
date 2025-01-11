@@ -34,17 +34,8 @@ The **Stock Market Watchlist Application** is a Python-based desktop application
    \`\`\`
 
 ### Step 3: Set Up Environment Variables
-1. In the extracted folder, create a file named \`.env\` (or copy \`.env.example\` to \`.env\`):
-   \`\`\`bash
-   cp .env.example .env
-   \`\`\`
-
-2. Open the \`.env\` file in a text editor and replace \`your_api_key_here\` with your actual **API key** from the [Financial Modeling Prep API](https://financialmodelingprep.com/developer/docs/).
-
-   Example \`.env\` file:
-   \`\`\`plaintext
-   API_KEY=your_actual_api_key_here
-   \`\`\`
+1. In the extracted folder, open the .env file.
+2. Replace YOUR_API_KEY_HERE with your actual API key from the Financial Modeling Prep API.
 
 ---
 
