@@ -11,11 +11,11 @@
 #    and analyst ratings/average stock forecasts. Need more APIs here...
 # 4. Add a notifications system either through email or SMS
 
-import interface
+import interface # Import interface file
 import database  # Import the database module
 
 def main():
-    # Ensure the table is created before running the application
+    # Create database table before running the application
     database.create_table()
 
     # Initialize the interface

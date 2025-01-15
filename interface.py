@@ -5,7 +5,6 @@ import sys
 
 import watchlist
 import stock_details
-import database
 
 class MainWindow(QMainWindow):
     def __init__(self):
@@ -13,7 +12,7 @@ class MainWindow(QMainWindow):
         self.setWindowTitle("Stock Watchlist")
         self.setGeometry(650, 100, 600, 800)
 
-        # Initialize stock watchlist class (with database integration)
+        # Initialize stock watchlist class
         self.stock_watchlist_instance = watchlist.StockWatchlist()
 
         # Add a widget to display the stocks
@@ -36,12 +35,10 @@ class MainWindow(QMainWindow):
         self.stock_list_container = QVBoxLayout()
         self.layout.addLayout(self.stock_list_container)
 
-        # Dictionary to hold stock labels and button states and layouts
-        self.stock_labels = {}
-        self.detail_buttons = {}
+        # Dictionary to hold stock layouts
         self.stock_layouts = {}
 
-        # Add loop for each stock in stock list (from the database)
+        # Populate GUI with initial stocks from the watchlist
         for stock in self.stock_watchlist_instance.stock_list:
             self.add_stock_to_gui(stock)
 
@@ -84,16 +81,26 @@ class MainWindow(QMainWindow):
             return
 
         if action == "add":
+            if stock_symbol in self.stock_layouts:
+                print("This stock is already in the watchlist.")
+                return
+
             self.stock_watchlist_instance.add_stock(stock_symbol)
-            self.add_stock_to_gui(stock_symbol)
+            if stock_symbol in self.stock_watchlist_instance.stock_list:
+                self.add_stock_to_gui(stock_symbol)
+
         elif action == "remove":
-            self.stock_watchlist_instance.remove_stock(stock_symbol)
-            self.remove_stock_from_gui(stock_symbol)
+            if stock_symbol in self.stock_layouts:
+                self.stock_watchlist_instance.remove_stock(stock_symbol)
+                self.remove_stock_from_gui(stock_symbol)
 
         # Clear the input field
         self.stock_symbol_input.clear()
 
     def add_stock_to_gui(self, stock_symbol):
+        if stock_symbol in self.stock_layouts:
+            return
+
         # Create horizontal layout for stock
         stock_list_h_layout = QHBoxLayout()
 

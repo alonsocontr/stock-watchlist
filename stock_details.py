@@ -1,7 +1,12 @@
 import requests
+from dotenv import load_dotenv
+import os
 
-# Financial modeling api key
-API_KEY = "Tle4uAteMqjtOCv4fozB2fiHlGC1VsOK"
+# Load environmental variables
+load_dotenv()
+
+# Financial modeling API key
+API_KEY = os.getenv("API_KEY")
 
 def get_stock_info(symbol):
     short_quote_url = f"https://financialmodelingprep.com/api/v3/quote-short/{symbol}?apikey={API_KEY}"
@@ -29,21 +34,12 @@ def get_stock_info(symbol):
     # Converting data from a list to a dictionary
     price_change_dict = data3[0]
 
-
-    # Check response status code for short quote API
-    if response.status_code != 200:
-        print("Failed to retrieve data")
-
-    # Check response status code for full quote API
-    if response2.status_code != 200:
-        print("Failed to retrieve data")
-
     # Retrieve symbol and price value from dictionary
-    symbol = (short_quote_dict["symbol"])
-    price = (short_quote_dict["price"])
-    volume = (short_quote_dict["volume"])
-    pe_ratio = (full_quote_dict["pe"])
-    market_cap = (full_quote_dict["marketCap"])
-    price_change_one_day = (price_change_dict["1D"])
+    symbol = short_quote_dict["symbol"]
+    price = short_quote_dict["price"]
+    volume = short_quote_dict["volume"]
+    pe_ratio = full_quote_dict["pe"]
+    market_cap = full_quote_dict["marketCap"]
+    price_change_one_day = price_change_dict["1D"]
 
     return symbol, price, volume, pe_ratio, market_cap, price_change_one_day
