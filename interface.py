@@ -85,9 +85,12 @@ class MainWindow(QMainWindow):
                 print("This stock is already in the watchlist.")
                 return
 
-            self.stock_watchlist_instance.add_stock(stock_symbol)
-            if stock_symbol in self.stock_watchlist_instance.stock_list:
-                self.add_stock_to_gui(stock_symbol)
+            try:
+                self.stock_watchlist_instance.add_stock(stock_symbol)
+                if stock_symbol in self.stock_watchlist_instance.stock_list:
+                    self.add_stock_to_gui(stock_symbol)
+            except Exception as e:
+                print(f"Failed to add stock: {e}")
 
         elif action == "remove":
             if stock_symbol in self.stock_layouts:
