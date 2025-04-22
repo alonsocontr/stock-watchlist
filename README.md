@@ -1,6 +1,6 @@
-# Stock Market Watchlist Application
+# Stock Market Watchlist 
 ## Overview
-The **Stock Market Watchlist Application** is a Python-based desktop application that allows users to track stock prices in real-time, manage a personalized watchlist, and view detailed stock information. Built with **PyQt5** for the GUI and integrated with the **Financial Modeling Prep API**, this app provides an intuitive interface for monitoring stock market data.
+This **Stock Market Watchlist** is a Python-based desktop application that allows users to track stock prices in real-time, manage a personalized watchlist, and view detailed stock information. Built with **PyQt5** for the GUI and integrated with the **Financial Modeling Prep API**, this app provides an intuitive interface for monitoring stock market data.
 
 ---
 
